@@ -1,0 +1,21 @@
+import org.junit.Test;
+import java.util.List;
+import static javax.swing.UIManager.get;
+import static org.junit.Assert.assertEquals;
+public class StringCalculatorTest {
+@Test
+public void testAdd()
+{
+StringCalculator obj = new StringCalculator();
+String inputNumbers1 = "1,0,2,5,";
+String inputNumbers2 = "1,0,5";
+String inputNumbers3 = "1,01,4,6";
+List<Integer> result1 = obj.Add(inputNumbers1,inputNumbers2,inputNumbers3);
+int k1 = result1.get(0);
+int k2 = result1.get(1);
+int k3 = result1.get(2);
+assertEquals(8,k1);
+assertEquals(6,k2);
+assertEquals(12,k3);
+}
+}
