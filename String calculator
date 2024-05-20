@@ -1,0 +1,118 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class StringCalculator {
+  static int z=0;
+  public static void main(String[] args) {
+    String number1 = "";
+    String number2 = "1,2";
+    String number3 = "1,2,3";
+    StringCalculator obj = new StringCalculator();
+    List<Integer> result = obj.Add(number1, number2, number3);
+    System.out.println( "The sum of  '' " + number1 + " '' digit's : "  + result.get(0));
+    System.out.println( "The sum of  '' " + number2 + " '' digit's : "  + result.get(1));
+    System.out.println( "The sum of  '' " + number3 + " '' digit's : "  + result.get(2));
+    System.out.println("The number of times Add() method called: " + GetCalledCount());
+  }
+  <e> List<Integer> Add(String number1, String number2, String number3) {
+    z++;
+    int sum1 = 0;
+    int sum2 = 0;
+    int sum3 = 0;
+    //  for STRING 1 PRINTING -VE VALUES
+    for (int i = 0; i < number1.length(); i++) {
+        if (i > 0) {
+          char c = number1.charAt(i-1);
+          char c1 = number1.charAt(i);
+          if (c == '-') {
+            System.out.println("The list of negative numbers in string1:  " +c + c1);
+      }
+        }
+          }
+    //  for STRING 2 PRINTING -VE VALUES
+    for (int i = 0; i < number2.length(); i++) {
+      if (i > 0) {
+        char c = number2.charAt(i-1);
+        char c1 = number2.charAt(i);
+        if (c == '-') {
+          System.out.println("The list of negative numbers in string2:  " +c + c1);
+        }
+      }
+    }
+    //  for STRING 3 PRINTING -VE VALUES
+    for (int i = 0; i < number3.length(); i++) {
+      if (i > 0) {
+        char c = number3.charAt(i-1);
+        char c1 = number3.charAt(i);
+        if (c == '-') {
+          System.out.println("The list of negative numbers in string3:  " +c + c1);
+        }
+      }
+    }
+    //  for STRING 1 THROW ERROR & SUM
+    for (int i = 0; i < number1.length(); i++) {
+      if (i > 0) {
+        char c = number1.charAt(i-1);
+        char c1 = number1.charAt(i);
+        if (c == '-') {
+          throw new IllegalArgumentException("Negative numbers are not allowed");
+        }
+        if (c == ',') {
+          if (c1 == '\n') {
+            throw new IllegalArgumentException("INVALID INPUT");
+          }
+        }
+      }
+      char c = number1.charAt(i);
+      if (Character.isDigit(c))
+        sum1 += Integer.parseInt(String.valueOf(c));
+    }
+    //  for STRING 2 THROW ERROR & SUM
+    for (int i = 0; i < number2.length(); i++) {
+      if (i > 0) {
+        char c = number2.charAt(i-1);
+        char c1 = number2.charAt(i);
+        if (c == '-') {
+          throw new IllegalArgumentException("Negative numbers are not allowed");
+        }
+        if (c == ',') {
+          if (c1 == '\n') {
+            throw new IllegalArgumentException("INVALID INPUT");
+        }
+          }
+      }
+      char c = number2.charAt(i);
+      if (Character.isDigit(c))
+        sum2 += Integer.parseInt(String.valueOf(c));
+    }
+    //  for STRING 3 THROW ERROR & SUM
+    for (int i = 0; i < number3.length(); i++) {
+      if (i > 0) {
+        char c = number3.charAt(i-1);
+        char c1 = number3.charAt(i);
+        if (c == '-') {
+          throw new IllegalArgumentException("Negative numbers are not allowed");
+        }
+        if (c == ',') {
+          if (c1 == '\n') {
+            throw new IllegalArgumentException("INVALID INPUT");
+          }
+        }
+      }
+      char c = number3.charAt(i);
+      if (Character.isDigit(c))
+        sum3 += Integer.parseInt(String.valueOf(c));
+    }
+    List<Integer> list = new ArrayList<Integer>();
+    list.add(sum1);
+    list.add(sum2);
+    list.add(sum3);
+    list.add(z);
+    return list;
+  }
+  public static int GetCalledCount(){
+    StringCalculator obj = new StringCalculator();
+   List<Integer> result = obj.Add("", "", "");
+    return result.get(3);
+  }
+ }
